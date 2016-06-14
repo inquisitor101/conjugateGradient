@@ -2,35 +2,45 @@
 #include "funcs.h"
 #include "utilities.h"
 
+/* In order to use, compile via make and specify
+   the following options for execution:
+        ./CG  <n>  <i>  <e>
+              where:
+                     <n> : dimention number (n-by-n)
+                     <i> : maximum iterations
+                     <e> : error tolerance
+
+                                                        */
 
 int main(int argc, char **argv){
 
-  // get dimensions
-  int m = atoi(argv[1]); // row size
-  int n = atoi(argv[2]); // col size
+  // get parameters
+  int n = atoi(argv[1]); // row/col size
+  int maxIter = atoi(argv[2]);
+  double TOL  = atof(argv[3]);
 
   // allocate memory
-  A  = (numType *)calloc(m*n, sizeof(numType));
-  b  = (numType *)calloc(n  , sizeof(numType));
-  x  = (numType *)calloc(n  , sizeof(numType));
+  A  = (numType *)calloc(n*n, sizeof(numType)); assert(A != NULL);
+  b  = (numType *)calloc(n  , sizeof(numType)); assert(b != NULL);
+  x  = (numType *)calloc(n  , sizeof(numType)); assert(x != NULL);
+  r  = (numType *)calloc(n  , sizeof(numType)); assert(r != NULL);
 
   // TODO matrix and vector generation
-  initialize(A, b, x, m, n);
+  initialize(A, b, x, n);
 
-  // print resulting matrix
-  printMatrix(A, m, n);
-  // print resulting vector
-  printVector(b, n);
+  // TODO solve using steepest descent
+  steepestDescent(A, b, x, r, n, maxIter, TOL);
 
-  // TODO solve using CG
-  // CG(A, b);
+  // TODO solve using conjugate gradient
 
-  // TODO validate results - residual
-  // residualCheck();
+  // print result
+  printVector(x, n);
+
 
   free(A);
   free(b);
   free(x);
+  free(r);
   printf("\n");
   return 0;
 }

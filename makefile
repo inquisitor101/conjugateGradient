@@ -1,7 +1,7 @@
 CC = gcc
 LD = gcc
 CFLAGS = -std=c99 -Wall -Werror
-LDFLAGS =
+LDFLAGS = -lm
 RM = /bin/rm -f
 OBJS = main.o funcs.o utilities.o
 EXECUTABLE = CG
@@ -9,7 +9,7 @@ EXECUTABLE = CG
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJS)
-	$(LD) $(LDFLAGS) $(OBJS) -o $(EXECUTABLE)
+	$(LD) $(OBJS) -o $(EXECUTABLE) $(LDFLAGS)
 
 utilities.o: header.h utilities.h utilities.c
 	$(CC) $(CFLAGS) -c utilities.c
