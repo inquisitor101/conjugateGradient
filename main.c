@@ -29,10 +29,11 @@ int main(int argc, char **argv){
   initialize(A, b, x, n);
 
   // TODO solve using steepest descent
-  steepestDescent(A, b, x, r, n, maxIter, TOL);
+  // steepestDescent(A, b, x, r, n, maxIter, TOL);
 
   // TODO solve using conjugate gradient
-
+  conjGradient(A, b, x, r, n, maxIter, TOL);
+  
   // print result
   printVector(x, n);
 
