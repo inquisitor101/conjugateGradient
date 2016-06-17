@@ -1,2 +1,6 @@
 # conjugateGradient
-These are an implementation of iterative gradient methods, in particular the widely used conjugate gradient method (CG)
+This is an implementation of conjugate gradient (CG) methods, in particular:
+
+1- Steepest Descent
+2- Conjugate Gradient
+3- pre-conditioned Conjugate Gradient
